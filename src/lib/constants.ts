@@ -1,0 +1,1 @@
+export const middleOfAuckland: [number, number] = [174.76524308727355, -36.84903290470798];
