@@ -1,0 +1,30 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:                # GitHub Environment name (for env-scoped secrets, approvals)
+        description: 'GitHub Environment to target'
+        required: true
+        type: choice
+        options:
+          - ' '
+          - 'development'
+          - 'preview'
+      swa_deploy_env:             # SWA deploy lane: production | preview
+        description: 'SWA deploy target (production/preview)'
+        required: true
+        type: choice
+        options:
+          - ' '
+          - production
+          - preview
+
+jobs: 
+  call-build-and-deploy:
+    name: Run Build and Deploy 
+    uses: ./.github/workflows/build.yml
+    with:
+      environment: $environment
+      swa_deploy_env: $swa_deploy_env
+    secrets: inherit
