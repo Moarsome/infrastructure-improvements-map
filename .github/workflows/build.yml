@@ -1,5 +1,9 @@
 name: Azure Static Web Apps CI/CD
 
+permissions:
+      id-token: write
+      contents: read
+
 on:
 
   workflow_call:
@@ -21,9 +25,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}   # exposes env-scoped secrets for this job
-    permissions:
-      id-token: write
-      contents: read
+    
     steps:
       - uses: actions/checkout@v3
         with:
