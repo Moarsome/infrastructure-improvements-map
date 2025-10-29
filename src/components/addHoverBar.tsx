@@ -1,5 +1,5 @@
 import { Box, Paper, Typography } from "@mui/material";
-import { useMap, type MapRef } from "@vis.gl/react-maplibre";
+import { type MapRef } from "@vis.gl/react-maplibre";
 import { useState, useEffect } from "react";
 
 type HoverBarProps = {
