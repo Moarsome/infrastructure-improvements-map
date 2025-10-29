@@ -1,9 +1,9 @@
-import type { Polygon } from "geojson";
+// import type { Polygon } from "geojson";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
-import { useMap, Popup} from "@vis.gl/react-maplibre";
-import { centroid } from "../lib/getPolygonCenter";
+// import { useMap, Popup} from "@vis.gl/react-maplibre";
+// import { centroid } from "../lib/getPolygonCenter";
 
  /*
  export default function AddPopup() {
