@@ -5,11 +5,11 @@ on:
   workflow_call:
     inputs:
       environment:
-        description: 'GitHub Environment to target'
+        description: 'Resource Environment to target'
         required: true
         type: string
       swa_deploy_env:
-        description: 'SWA deploy target (production/preview)'
+        description: 'SWA deploy target'
         required: true
         type: string
     secrets:
