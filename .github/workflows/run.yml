@@ -8,7 +8,6 @@ on:
         required: true
         type: choice
         options:
-          - ' '
           - 'development'
           - 'preview'
       swa_deploy_env:             # SWA deploy lane: production | preview
@@ -16,7 +15,6 @@ on:
         required: true
         type: choice
         options:
-          - ' '
           - production
           - preview
 
