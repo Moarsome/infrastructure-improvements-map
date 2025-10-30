@@ -13,7 +13,7 @@ on:
         required: true
         type: string
     secrets:
-      AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_DUNE_0565BA100:
+      AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_DUNE_00D08EC00:
         required: true
 
 jobs:
@@ -43,7 +43,7 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_DUNE_0565BA100 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_POLITE_DUNE_00D08EC00 }}
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
