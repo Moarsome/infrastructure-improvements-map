@@ -3,19 +3,26 @@ name: Run SWA CI/CD
 on:
   workflow_dispatch:
     inputs:
-      swa_deploy_env:             # SWA deploy lane: production | preview
+      environment:            
+        description: 'Environment target'
+        required: true
+        type: choice
+        options:
+          - development
+          - production
+      swa_deploy_env:            
         description: 'SWA deployment environment target'
         required: true
         type: choice
         options:
-          - production
           - preview
+          - production
 
 jobs: 
   call-build-and-deploy:
     name: Run Build and Deploy 
     uses: ./.github/workflows/build.yml
     with:
-      environment: $environment
-      swa_deploy_env: $swa_deploy_env
+      environment: ${{ inputs.swa_deploy_env }}
+      swa_deploy_env: ${{ inputs.swa_deploy_env }}
     secrets: inherit
