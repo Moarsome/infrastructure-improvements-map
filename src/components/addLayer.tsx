@@ -5,6 +5,7 @@ import { middleOfAuckland } from "../lib/constants";
 import { loadGeoJSON } from "../lib/getGeoJSON";
 import { Source, Layer, useMap, type MapRef} from "@vis.gl/react-maplibre";
 import { addFeatureIDs } from "../lib/addFeatureIDs";
+import { addProjectCategories } from "../lib/categoriseProjects";
 
 type AddLayerProps = {
   onLoad: (mapCurrent:MapRef) => void;
@@ -26,17 +27,26 @@ type AddLayerProps = {
         id: 'point',
         type: 'fill',
         paint: {
-            'fill-color': '#007cbf',
+            'fill-color': [
+            'match',
+            ['get', 'ProjectCategory'], 
+            'pedestrian', '#007cbf',
+            'cycling', '#2ea85dff',
+            'transit', '#7800beff',
+            'car', '#96291aff',
+            'grey'
+            ],
+            
             'fill-opacity': [
                     'case',
                     ['boolean', ['feature-state', 'hover'], false],
                     1,
-                    0.5
+                    0.8
                 ],
             'fill-outline-color':['case',
                     ['boolean', ['feature-state', 'clicked'], false],
                     '#FFFF',
-                    '#007cbf'
+                    '#FFFF'
                 ]
                     
         },
@@ -51,7 +61,8 @@ type AddLayerProps = {
             const data = await loadGeoJSON('https://infrastructureappst.blob.core.windows.net/infrastructure-gis-app-cn/AT_Infrastructure_Projects.geojson.gz');
             if (!data) return;
             const newData = addFeatureIDs(data)
-            setLoadedGeoJSON(newData);
+            const dataWithCategories = addProjectCategories(newData)
+            setLoadedGeoJSON(dataWithCategories);
             if (map.current) onLoad(map.current);
         };
         fetchData();
